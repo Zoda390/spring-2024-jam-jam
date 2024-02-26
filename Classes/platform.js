@@ -19,6 +19,10 @@ class Platform{
         pop();
     }
 
+    simpleCollision(other){
+        return this.collider.simpleCheck(other.collider);
+    }
+
     collision(other){
         return this.collider.check(other.collider);
     }

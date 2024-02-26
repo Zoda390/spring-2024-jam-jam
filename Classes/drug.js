@@ -1,5 +1,5 @@
 var DrugSize = 40;
-var drugNames = ["Speed"];
+var drugNames = ["Speed", "Strength", "Jump"];
 
 class Drug{
     constructor(x,y,type,count){
@@ -12,11 +12,13 @@ class Drug{
 
     render(){
         push();
-        fill(typeToDrugColor[this.type]);
         imageMode(CENTER);
-        //image(drugImgs[this.type][this.count], this.pos.x+(DrugSize/2)+(width/2)-cam.pos.x, this.pos.y+(DrugSize/2)+(3*(height/4))-cam.pos.y);
-        rect(this.pos.x+(width/2)-cam.pos.x, this.pos.y+(3*(height/4))-cam.pos.y, DrugSize, DrugSize);
+        image(drugImgs[this.type][1], this.pos.x+(DrugSize/2)+(width/2)-cam.pos.x, this.pos.y+(DrugSize/2)+(3*(height/4))-cam.pos.y);
         pop();
+    }
+
+    simpleCollision(other){
+        return this.collider.simpleCheck(other.collider);
     }
 
     collision(other){
